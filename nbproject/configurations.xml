@@ -32,6 +32,7 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
     <itemPath>.gitignore</itemPath>
+    <itemPath>README.md</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -58,6 +59,8 @@
         </linkerTool>
       </compileType>
       <item path=".gitignore" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="README.md" ex="false" tool="3" flavor2="0">
       </item>
       <item path="instructions/instructions.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -96,6 +99,8 @@
         </asmTool>
       </compileType>
       <item path=".gitignore" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="README.md" ex="false" tool="3" flavor2="0">
       </item>
       <item path="instructions/instructions.c" ex="false" tool="0" flavor2="0">
       </item>
