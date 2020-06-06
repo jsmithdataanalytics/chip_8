@@ -13,7 +13,9 @@ void fetch_decode_execute(void){
 }
 
 void emulate_cycle(void){
+    process_input();
     fetch_decode_execute();
+    draw();
 }
 
 int main(int argc, char *argv[]){
@@ -25,11 +27,9 @@ int main(int argc, char *argv[]){
     
     initialize_emulator();
     load_rom(argv[1]);
-    
     initialize_sdl();
-    fill_white();
-                    
-    while(1){
+                        
+    while(quit == 0){
         emulate_cycle();
     }
         

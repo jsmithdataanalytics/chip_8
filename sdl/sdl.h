@@ -2,7 +2,9 @@
 
 extern SDL_Window* window;
 extern SDL_Surface* screen_surface;
+extern int quit;
 
 void initialize_sdl(void);
 void close_sdl(void);
-void fill_white(void);
+void process_input(void);
+void draw(void);

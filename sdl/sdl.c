@@ -6,6 +6,9 @@
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 320;
 
+// Flag for whether user has clicked x
+int quit = 0;
+
 SDL_Window* window = NULL;
 SDL_Surface* screen_surface = NULL;
 
@@ -47,7 +50,16 @@ void initialize_sdl(void){
     printf("Initialized SDL\n");
 }
 
-void fill_white(void){
+void process_input(void){
+    SDL_Event e;
+    
+    while (SDL_PollEvent(&e) != 0){
+        
+        if (e.type == SDL_QUIT) quit = 1;
+    }
+}
+
+void draw(void){
     SDL_FillRect(screen_surface, NULL, SDL_MapRGB(screen_surface->format, 0xFF, 0xFF, 0xFF));
     SDL_UpdateWindowSurface(window);
 }
