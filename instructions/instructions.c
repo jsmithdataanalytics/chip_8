@@ -15,7 +15,7 @@ void jump(unsigned short opcode){
 void call(unsigned short opcode){
     
     if (sp > 15){
-        printf("Maximum stack size exceeded");
+        printf("Maximum stack size exceeded\n");
         exit(EXIT_FAILURE);
     }
     
@@ -27,7 +27,7 @@ void call(unsigned short opcode){
 void return_from_call(unsigned short opcode){
     
     if (sp < 1){
-        printf("Tried to return when no function calls have been made");
+        printf("Tried to return when no function calls have been made\n");
         exit(EXIT_FAILURE);
     }
     
@@ -194,7 +194,7 @@ void draw_sprite(unsigned short opcode){
     for (int i = 0; i < n; i++){
         
         if (I + i >= sizeof(memory)){
-            printf("Tried to read sprite beyond memory bounds");
+            printf("Tried to read sprite beyond memory bounds\n");
             exit(EXIT_FAILURE);
         }
         
@@ -234,7 +234,7 @@ void skip_next_if_vx_key_pressed(unsigned short opcode){
     int x = (opcode & (unsigned short)0x0F00) >> 8;
     
     if (v[x] > 15){
-        printf("Register Vx doesn't specify a valid key");
+        printf("Register Vx doesn't specify a valid key\n");
         exit(EXIT_FAILURE);
     }
     
@@ -245,7 +245,7 @@ void skip_next_if_vx_key_not_pressed(unsigned short opcode){
     int x = (opcode & (unsigned short)0x0F00) >> 8;
     
     if (v[x] > 15){
-        printf("Register Vx doesn't specify a valid key");
+        printf("Register Vx doesn't specify a valid key\n");
         exit(EXIT_FAILURE);
     }
     
@@ -276,7 +276,7 @@ void point_i_at_font_vx(unsigned short opcode){
     int x = (opcode & (unsigned short)0x0F00) >> 8;
     
     if (v[x] > 0xF){
-        printf("Register Vx doesn't identify a valid font character");
+        printf("Register Vx doesn't identify a valid font character\n");
         exit(EXIT_FAILURE);
     }
     
@@ -287,7 +287,7 @@ void dump_registers_v0_to_vx_at_i(unsigned short opcode){
     int x = (opcode & (unsigned short)0x0F00) >> 8;
     
     if ((I > 0xFFF) || (I + x > 0xFFF)){
-        printf("Tried to dump registers outside of memory bounds");
+        printf("Tried to dump registers outside of memory bounds\n");
         exit(EXIT_FAILURE);
     }
         
@@ -300,7 +300,7 @@ void load_registers_v0_to_vx_from_i(unsigned short opcode){
     int x = (opcode & (unsigned short)0x0F00) >> 8;
     
     if ((I > 0xFFF) || (I + x > 0xFFF)){
-        printf("Tried to load registers from outside of memory bounds");
+        printf("Tried to load registers from outside of memory bounds\n");
         exit(EXIT_FAILURE);
     }
     
@@ -313,7 +313,7 @@ void store_bcd_of_vx_at_i(unsigned short opcode){
     int x = (opcode & (unsigned short)0x0F00) >> 8;
     
     if ((I > 0xFFF) || (I + 2 > 0xFFF)){
-        printf("Tried to write BCD outside of memory bounds");
+        printf("Tried to write BCD outside of memory bounds\n");
         exit(EXIT_FAILURE);
     }
     
@@ -405,7 +405,7 @@ void (*instructions[34])(unsigned short) = {
 unsigned short fetch(void){
     
     if (pc > sizeof(memory)){
-        printf("Tried to fetch instruction from outside of memory bounds");
+        printf("Tried to fetch instruction from outside of memory bounds\n");
         exit(EXIT_FAILURE);
     }
     
@@ -422,6 +422,6 @@ void (*decode(unsigned short opcode))(unsigned short){
         if ((opcode & opcodes[i][1]) == opcodes[i][0]) return instructions[i];
     }
     
-    printf("Invalid opcode: 0x%04X", opcode);
+    printf("Invalid opcode: 0x%04X\n", (unsigned int)opcode);
     exit(EXIT_FAILURE);
 }

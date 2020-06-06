@@ -19,7 +19,7 @@ void emulate_cycle(void){
 int main(int argc, char *argv[]){
     
     if (argc != 2){
-        printf("Expected one argument: ROM filepath");
+        printf("Expected one argument: ROM filepath\n");
         exit(EXIT_FAILURE);
     }
     

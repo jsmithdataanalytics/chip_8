@@ -23,7 +23,7 @@ void initialize_sdl(void){
     }
     
     if (atexit(close_sdl) != 0){
-        printf("Failed to register close_sdl callback");
+        printf("Failed to register close_sdl callback\n");
         close_sdl();
         exit(EXIT_FAILURE);
     }
@@ -44,7 +44,7 @@ void initialize_sdl(void){
     
     screen_surface = SDL_GetWindowSurface(window);
     
-    printf("Initialized SDL");
+    printf("Initialized SDL\n");
 }
 
 void fill_white(void){

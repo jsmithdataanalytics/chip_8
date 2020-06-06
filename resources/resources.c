@@ -33,7 +33,7 @@ void initialize_emulator(void){
     initialize_rng();
     load_font_set();
     
-    printf("Initialized CHIP-8");
+    printf("Initialized CHIP-8\n");
 }
 
 void initialize_memory(void){
