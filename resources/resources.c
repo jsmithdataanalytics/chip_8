@@ -27,11 +27,13 @@ int graphics_cols = 64;
 unsigned char graphics[32][64];
 
 // Initialization
-void initialize(void){
+void initialize_emulator(void){
     initialize_memory();
     initialize_graphics();
     initialize_rng();
     load_font_set();
+    
+    printf("Initialized CHIP-8");
 }
 
 void initialize_memory(void){

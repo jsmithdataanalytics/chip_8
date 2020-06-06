@@ -26,7 +26,7 @@ extern int graphics_cols;
 extern unsigned char graphics[32][64];
 
 // Initialization
-void initialize(void);
+void initialize_emulator(void);
 void initialize_memory(void);
 void initialize_graphics(void);
 void initialize_rng(void);

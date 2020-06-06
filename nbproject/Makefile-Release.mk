@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/_ext/4a47ce26/sdl.o \
 	${OBJECTDIR}/instructions/instructions.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/resources/resources.o \
@@ -64,6 +65,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/chip-8: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/chip-8 ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/_ext/4a47ce26/sdl.o: /home/james/NetBeansProjects/chip-8/sdl/sdl.c
+	${MKDIR} -p ${OBJECTDIR}/_ext/4a47ce26
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/4a47ce26/sdl.o /home/james/NetBeansProjects/chip-8/sdl/sdl.c
 
 ${OBJECTDIR}/instructions/instructions.o: instructions/instructions.c
 	${MKDIR} -p ${OBJECTDIR}/instructions

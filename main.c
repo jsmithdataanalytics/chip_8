@@ -1,6 +1,7 @@
 #include"resources.h"
 #include"instructions.h"
 #include"rom.h"
+#include"sdl.h"
 
 #include<stdio.h>
 #include<stdlib.h>
@@ -17,12 +18,20 @@ void emulate_cycle(void){
 
 int main(int argc, char *argv[]){
     
-    if (argc != 2) exit(-1);
+    if (argc != 2){
+        printf("Expected one argument: ROM filepath");
+        exit(EXIT_FAILURE);
+    }
     
-    initialize();
+    initialize_emulator();
     load_rom(argv[1]);
+    
+    initialize_sdl();
+    fill_white();
                     
     while(1){
         emulate_cycle();
     }
+        
+    return 0;
 }

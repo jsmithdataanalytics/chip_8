@@ -9,10 +9,15 @@ void load_rom(char *filepath){
     
     FILE *file_ptr = fopen(filepath, "rb");
     
-    if (file_ptr == NULL) exit(10);
+    if (file_ptr == NULL){
+        printf("Failed to open ROM file");
+        exit(EXIT_FAILURE);
+    }
         
     int read_count = fread(memory + 0x200, 1, 3584, file_ptr);
     
     fclose(file_ptr);
     file_ptr = NULL;
+    
+    printf("Read ROM file (%d bytes)", read_count);
 }

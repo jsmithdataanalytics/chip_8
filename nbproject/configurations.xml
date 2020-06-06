@@ -7,6 +7,7 @@
       <itemPath>instructions/instructions.h</itemPath>
       <itemPath>resources/resources.h</itemPath>
       <itemPath>rom/rom.h</itemPath>
+      <itemPath>/home/james/NetBeansProjects/chip-8/sdl/sdl.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -19,6 +20,7 @@
       <itemPath>main.c</itemPath>
       <itemPath>resources/resources.c</itemPath>
       <itemPath>rom/rom.c</itemPath>
+      <itemPath>/home/james/NetBeansProjects/chip-8/sdl/sdl.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -50,15 +52,29 @@
             <pElem>resources</pElem>
             <pElem>instructions</pElem>
             <pElem>rom</pElem>
+            <pElem>sdl</pElem>
           </incDir>
         </cTool>
         <linkerTool>
           <linkerDynSerch>
             <pElem>resources</pElem>
           </linkerDynSerch>
+          <linkerLibItems>
+            <linkerOptionItem>-lSDL2</linkerOptionItem>
+          </linkerLibItems>
         </linkerTool>
       </compileType>
       <item path=".gitignore" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="/home/james/NetBeansProjects/chip-8/sdl/sdl.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="/home/james/NetBeansProjects/chip-8/sdl/sdl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="README.md" ex="false" tool="3" flavor2="0">
       </item>
@@ -99,6 +115,16 @@
         </asmTool>
       </compileType>
       <item path=".gitignore" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="/home/james/NetBeansProjects/chip-8/sdl/sdl.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="/home/james/NetBeansProjects/chip-8/sdl/sdl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="README.md" ex="false" tool="3" flavor2="0">
       </item>
