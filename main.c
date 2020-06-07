@@ -14,10 +14,17 @@ void fetch_decode_execute(void){
 
 void emulate_cycle(void){
     process_input();
-    fetch_decode_execute();
+    
+    for (int i = 0; i < 8; i++){
+        fetch_decode_execute();
+    }
+    
     draw();
     
-    SDL_Delay(2);
+    SDL_Delay(16);
+
+    if (delay) delay--;
+    if (sound) sound--;
 }
 
 int main(int argc, char *argv[]){

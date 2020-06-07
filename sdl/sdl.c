@@ -112,7 +112,26 @@ void process_input(void){
     }
 }
 
-void draw(void){
-    SDL_FillRect(screen_surface, NULL, SDL_MapRGB(screen_surface->format, 0xFF, 0xFF, 0xFF));
+void draw(void){    
+    SDL_Surface *frame = SDL_CreateRGBSurfaceFrom(graphics, 64, 32, 8, 64, 0, 0, 0, 0);
+    
+    SDL_Colour black = {0x00, 0x00, 0x00, 0xFF};
+    SDL_Colour white = {0xFF, 0xFF, 0xFF, 0xFF};
+    SDL_Colour palette[2];
+    palette[0] = black;
+    palette[1] = white;
+    
+    SDL_SetPaletteColors(frame->format->palette, palette, 0, 2);
+    
+    SDL_Rect stretchRect;
+    stretchRect.x = 0;
+    stretchRect.y = 0;
+    stretchRect.w = SCREEN_WIDTH;
+    stretchRect.h = SCREEN_HEIGHT;
+    
+    SDL_Surface *converted = SDL_ConvertSurface(frame, screen_surface->format, 0);
+    SDL_BlitScaled(converted, NULL, screen_surface, &stretchRect);
     SDL_UpdateWindowSurface(window);
+    SDL_FreeSurface(frame);
+    SDL_FreeSurface(converted);
 }
