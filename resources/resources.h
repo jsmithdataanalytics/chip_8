@@ -17,8 +17,8 @@ extern unsigned short stack[16];
 
 // Keypad
 extern unsigned char keypad[16];
-extern unsigned char key_press_flag;
-extern unsigned char key_press_value;
+extern unsigned char fx0a_waiting;
+extern unsigned char fx0a_key_press;
 
 // Graphics
 extern int graphics_rows;

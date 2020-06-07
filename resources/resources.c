@@ -18,8 +18,8 @@ unsigned short stack[16] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 // Keypad
 unsigned char keypad[16] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-unsigned char key_press_flag = 0;
-unsigned char key_press_value = 0;
+unsigned char fx0a_waiting = 0;
+unsigned char fx0a_key_press = 0xFF;
 
 // Graphics
 int graphics_rows = 32;

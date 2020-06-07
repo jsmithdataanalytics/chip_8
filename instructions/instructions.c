@@ -255,12 +255,20 @@ void skip_next_if_vx_key_not_pressed(unsigned short opcode){
 void load_vx_with_next_key_press(unsigned short opcode){
     int x = (opcode & (unsigned short)0x0F00) >> 8;
     
-    if (key_press_flag) {
-        v[x] = key_press_value;
+    if (!fx0a_waiting){
+        fx0a_waiting = 1;
+        pc -= 2;
+    }
+    
+    else if (fx0a_key_press == 0xFF) {
+        pc -= 2;
     }
     
     else {
-        pc -= 2;
+        v[x] = fx0a_key_press;
+        
+        fx0a_key_press = 0xFF;
+        fx0a_waiting = 0;
     }
 }
 
