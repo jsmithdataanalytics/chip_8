@@ -1,7 +1,7 @@
 #include<SDL2/SDL.h>
 
 extern SDL_Window* window;
-extern SDL_Surface* screen_surface;
+extern SDL_Renderer* renderer;
 extern int quit;
 
 void initialize_sdl(void);

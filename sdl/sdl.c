@@ -11,7 +11,10 @@ const int SCREEN_HEIGHT = 320;
 int quit = 0;
 
 SDL_Window* window = NULL;
-SDL_Surface* screen_surface = NULL;
+SDL_Renderer* renderer = NULL;
+
+SDL_Colour black = {0x00, 0x00, 0x00, 0xFF};
+SDL_Colour white = {0xFF, 0xFF, 0xFF, 0xFF};
 
 void close_sdl(void){
     SDL_DestroyWindow(window);
@@ -46,7 +49,12 @@ void initialize_sdl(void){
         exit(EXIT_FAILURE);
     }
     
-    screen_surface = SDL_GetWindowSurface(window);
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    
+    if (renderer == NULL){
+        printf("Error creating SDL renderer: %s\n", SDL_GetError());
+        exit(EXIT_FAILURE);
+    }
     
     printf("Initialized SDL\n");
 }
@@ -115,13 +123,12 @@ void process_input(void){
 void draw(void){    
     SDL_Surface *frame = SDL_CreateRGBSurfaceFrom(graphics, 64, 32, 8, 64, 0, 0, 0, 0);
     
-    SDL_Colour black = {0x00, 0x00, 0x00, 0xFF};
-    SDL_Colour white = {0xFF, 0xFF, 0xFF, 0xFF};
     SDL_Colour palette[2];
     palette[0] = black;
     palette[1] = white;
     
     SDL_SetPaletteColors(frame->format->palette, palette, 0, 2);
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, frame);
     
     SDL_Rect stretchRect;
     stretchRect.x = 0;
@@ -129,9 +136,11 @@ void draw(void){
     stretchRect.w = SCREEN_WIDTH;
     stretchRect.h = SCREEN_HEIGHT;
     
-    SDL_Surface *converted = SDL_ConvertSurface(frame, screen_surface->format, 0);
-    SDL_BlitScaled(converted, NULL, screen_surface, &stretchRect);
-    SDL_UpdateWindowSurface(window);
+    SDL_RenderCopy(renderer, texture, NULL, &stretchRect);
+    SDL_RenderPresent(renderer);
+    
     SDL_FreeSurface(frame);
-    SDL_FreeSurface(converted);
+    SDL_DestroyTexture(texture);
+    frame = NULL;
+    texture = NULL;
 }

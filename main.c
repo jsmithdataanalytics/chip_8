@@ -21,8 +21,6 @@ void emulate_cycle(void){
     
     draw();
     
-    SDL_Delay(16);
-
     if (delay) delay--;
     if (sound) sound--;
 }
