@@ -56,40 +56,39 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=-lSDL2 -lSDL2_mixer
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/chip-8
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk chip-8
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/chip-8: ${OBJECTFILES}
-	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/chip-8 ${OBJECTFILES} ${LDLIBSOPTIONS}
+chip-8: ${OBJECTFILES}
+	${LINK.c} -o chip-8 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/_ext/4a47ce26/sdl.o: /home/james/NetBeansProjects/chip-8/sdl/sdl.c
 	${MKDIR} -p ${OBJECTDIR}/_ext/4a47ce26
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/4a47ce26/sdl.o /home/james/NetBeansProjects/chip-8/sdl/sdl.c
+	$(COMPILE.c) -g -Iresources -Iinstructions -Irom -Isdl -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/4a47ce26/sdl.o /home/james/NetBeansProjects/chip-8/sdl/sdl.c
 
 ${OBJECTDIR}/instructions/instructions.o: instructions/instructions.c
 	${MKDIR} -p ${OBJECTDIR}/instructions
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/instructions/instructions.o instructions/instructions.c
+	$(COMPILE.c) -g -Iresources -Iinstructions -Irom -Isdl -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/instructions/instructions.o instructions/instructions.c
 
 ${OBJECTDIR}/main.o: main.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
+	$(COMPILE.c) -g -Iresources -Iinstructions -Irom -Isdl -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
 
 ${OBJECTDIR}/resources/resources.o: resources/resources.c
 	${MKDIR} -p ${OBJECTDIR}/resources
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/resources/resources.o resources/resources.c
+	$(COMPILE.c) -g -Iresources -Iinstructions -Irom -Isdl -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/resources/resources.o resources/resources.c
 
 ${OBJECTDIR}/rom/rom.o: rom/rom.c
 	${MKDIR} -p ${OBJECTDIR}/rom
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/rom/rom.o rom/rom.c
+	$(COMPILE.c) -g -Iresources -Iinstructions -Irom -Isdl -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/rom/rom.o rom/rom.c
 
 # Subprojects
 .build-subprojects:
