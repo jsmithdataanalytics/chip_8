@@ -34,6 +34,7 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
     <itemPath>.gitignore</itemPath>
+    <itemPath>/home/james/NetBeansProjects/chip-8/LICENSE.txt</itemPath>
     <itemPath>README.md</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
@@ -67,6 +68,11 @@
         </linkerTool>
       </compileType>
       <item path=".gitignore" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="/home/james/NetBeansProjects/chip-8/LICENSE.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="/home/james/NetBeansProjects/chip-8/sdl/sdl.c"
             ex="false"
@@ -117,6 +123,11 @@
         </asmTool>
       </compileType>
       <item path=".gitignore" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="/home/james/NetBeansProjects/chip-8/LICENSE.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="/home/james/NetBeansProjects/chip-8/sdl/sdl.c"
             ex="false"
