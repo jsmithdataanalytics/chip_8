@@ -2,7 +2,6 @@
 #include"sdl.h"
 
 #include<stdio.h>
-#include<SDL2/SDL.h>
 
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 320;
@@ -10,8 +9,10 @@ const int SCREEN_HEIGHT = 320;
 // Flag for whether user has clicked x
 int quit = 0;
 
-SDL_Window* window = NULL;
-SDL_Renderer* renderer = NULL;
+SDL_Window *window = NULL;
+SDL_Renderer *renderer = NULL;
+
+Mix_Chunk *beep = NULL;
 
 SDL_Colour black = {0x00, 0x00, 0x00, 0xFF};
 SDL_Colour white = {0xFF, 0xFF, 0xFF, 0xFF};
@@ -20,6 +21,12 @@ void close_sdl(void){
     SDL_DestroyWindow(window);
     window = NULL;
     SDL_Quit();
+}
+
+void close_sdl_mixer(void){
+    Mix_FreeChunk(beep);
+    beep = NULL;
+    Mix_CloseAudio();
 }
 
 void initialize_sdl(void){
@@ -53,6 +60,24 @@ void initialize_sdl(void){
     
     if (renderer == NULL){
         printf("Error creating SDL renderer: %s\n", SDL_GetError());
+        exit(EXIT_FAILURE);
+    }
+    
+    if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 1, 512) == -1){
+        printf("Error initializing SDL mixer: %s\n", Mix_GetError());
+        exit(EXIT_FAILURE);
+    }
+    
+    if (atexit(close_sdl_mixer) != 0){
+        printf("Failed to register close_sdl_mixer callback\n");
+        close_sdl_mixer();
+        exit(EXIT_FAILURE);
+    }
+    
+    beep = Mix_LoadWAV("sdl/beep.wav");
+    
+    if (beep == NULL){
+        printf("Error loading beep.wav: %s\n", Mix_GetError());
         exit(EXIT_FAILURE);
     }
     

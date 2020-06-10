@@ -19,6 +19,8 @@ void emulate_cycle(void){
         fetch_decode_execute();
     }
     
+    if (sound) Mix_PlayChannel(0, beep, 0);
+        
     draw();
     
     if (delay) delay--;

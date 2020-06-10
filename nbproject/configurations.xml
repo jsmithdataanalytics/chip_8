@@ -56,11 +56,13 @@
           </incDir>
         </cTool>
         <linkerTool>
+          <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/chip-8</output>
           <linkerDynSerch>
             <pElem>resources</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lSDL2</linkerOptionItem>
+            <linkerOptionItem>-lSDL2_mixer</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>

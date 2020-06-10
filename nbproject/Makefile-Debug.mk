@@ -56,7 +56,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-Wl,-rpath,'resources' -lSDL2
+LDLIBSOPTIONS=-Wl,-rpath,'resources' -lSDL2 -lSDL2_mixer
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
