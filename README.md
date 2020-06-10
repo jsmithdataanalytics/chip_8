@@ -12,23 +12,31 @@ A CHIP-8 emulator for Linux written in C and SDL 2.0
 
 ## Build
 
-From project root, run:
+From project root:
 
-```make```
+```
+make
+```
 
 ## Run
 
-```./chip-8 absolute/path/to/rom```
+```
+./chip-8 absolute/path/to/rom
+```
 
-## Keyboard Layout:
+## Key Mapping:
 
-### Chip8:
+### CHIP-8:
+|   |   |   |   |
+|---|---|---|---|
 | 1 | 2 | 3 | C |
 | 4 | 5 | 6 | D |
 | 7 | 8 | 9 | E |
 | A | 0 | B | F |
 
 ### Emulator:
+|   |   |   |   |
+|---|---|---|---|
 | 1 | 2 | 3 | 4 |
 | Q | W | E | R |
 | A | S | D | F |
