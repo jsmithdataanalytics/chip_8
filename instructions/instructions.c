@@ -300,8 +300,6 @@ void dump_registers_v0_to_vx_at_i(unsigned short opcode){
     }
         
     memcpy(memory + I, v, x + 1);
-    
-    I += x + 1;
 }
 
 void load_registers_v0_to_vx_from_i(unsigned short opcode){
@@ -313,8 +311,6 @@ void load_registers_v0_to_vx_from_i(unsigned short opcode){
     }
     
     memcpy(v, memory + I, x + 1);
-    
-    I += x + 1;
 }
 
 void store_bcd_of_vx_at_i(unsigned short opcode){
